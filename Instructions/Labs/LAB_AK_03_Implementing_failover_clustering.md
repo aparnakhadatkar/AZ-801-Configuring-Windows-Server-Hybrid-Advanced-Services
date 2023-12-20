@@ -325,13 +325,21 @@ After completing this lab, you'll be able to:
 
 1. In the context menu, select **More Actions**, and then select **Start Cluster Service**.
 
+   ![](../Media/lab03-32.png) 
+
 1. In the **Failover Cluster Manager** console, right-click or access the context menu for the **SEA-CL03.Contoso.com** cluster, select **More Actions**, and then select **Configure Cluster Quorum Settings**. This will start the **Configure Cluster Quorum Wizard**.
+
+    ![](../Media/lab03-33.png) 
 
 1. On the **Before You Begin** page, select **Next**.
 
 1. On the **Select Quorum Configuration Option** page, ensure that the **Use default quorum configuration** option is selected, and then select **Next**.
 
-1. On the **Confirmation** page, note that, by default, **Cluster Disk 3** is selected as the **Disk Witness**, and select **Next**. 
+    ![](../Media/lab03-34.png) 
+
+1. On the **Confirmation** page, note that, by default, **Cluster Disk 3** is selected as the **Disk Witness**, and select **Next**.
+
+   ![](../Media/lab03-35.png) 
 
 1. On the **Summary** page, select **Finish**.
 
