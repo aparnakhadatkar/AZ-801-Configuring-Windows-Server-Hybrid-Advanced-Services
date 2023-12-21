@@ -29,10 +29,10 @@ After completing this lab, you'll be able to:
 
    |Setting|Value|
    |---|---|
-   |**Subscription (1)**|the name of the Azure subscription you will be using in this lab|
+   |**Subscription (1)**|Leave the default subscription|
    |**Resource group (2)**|**AZ801-L0501-RG**|
    |**Vault name (3)**|**az801l05a-rsvault**|
-   |**Location (4)**|the name of an Azure region where you can create an Azure Recovery Services vault and is close to the location of the lab environment|
+   |**Location (4)**|Leave the default region|
 
     ![](../media/01.png)
 
@@ -62,9 +62,9 @@ After completing this lab, you'll be able to:
    > **Note:** Storage replication type cannot be changed after you implement protection.
 
 1. On the **az801l05a-rsvault | Properties** page, select the **Update** link under the **Security Settings** label.
-1. On the **Security and soft delete settings** page, disable **Enable soft delete for cloud workloads (1)**, disable **Enable soft delete and security settings for hybrid workloads (2)**, select **Update (3)**, and then **close (4)** the **Security and soft delete settings** page.
+1. On the **Security settings** page, Select **Disable(1)** for Soft Delete (For workloads running in azure), and select **Save (2)**
 
-     ![](../media/05.png)
+     ![](../Media/p2.png)
 
 ## Exercise 2: Implementing Hyper-V VM protection by using Azure Site Recovery vault
 
@@ -75,35 +75,38 @@ After completing this lab, you'll be able to:
 
    |Setting|Value|
    |---|---|
-   |**Subscription (1)**|the name of the Azure subscription you are using in this lab|
+   |**Subscription (1)**|Leave the default subscription|
    |**Resource group (2)**|**AZ801-L0502-RG**|
    |**Virtual network Name (3)**|**az801l05-dr-vnet**|
-   |**Region (4)**|the name of the Azure region into which you deployed the Recovery Services vault earlier in this lab|
+   |**Region (4)**|Leave the default region|
 
     ![](../media/09.png)
 
-1. On the **IP addresses** tab of the **Create virtual network** page, select the ellipsis symbol (**...**) next to the **+ add a subnet** button, from the dropdown list select **Delete address space**, select **Add an IP address space**.
+1. On the **IP addresses** tab of the **Create virtual network** page,
+    - Remove the default IP Address space by clicking on **Delete the address space**
 
-1. On the **Add an IP address space** page, specify the following settings (leave others with their default values) and select **Add**:
+      ![](../Media/unit4-image2.png)   
+      
+   - After deleting **address space**, select **Add IPV4 Address space** specify the following settings (leave others with their default values).
 
-   |Setting|Value|
-   |---|---|
-   |Starting Address|**10.5.0.0**|
-   |Address space size|**/22 (1024 Addresses)**|
+      ![](../Media/unit4-image3.png)
 
-   ![](../media/10.png)
+       |Setting|Value|
+       |---|---|
+       |Starting Address|**10.5.0.0**|
+       |Address space size|**/22 (1024 Addresses)**|
 
 1. On the **IP addresses** tab of the **Create virtual network** page, select **+ Add a subnet**.
-1. On the **Add a subnet (1)** page, specify the following settings (leave others with their default values) and select **Add (5)**:
+1. On the **Add a subnet** page, specify the following settings (leave others with their default values) and select **Add**:
 
    |Setting|Value|
    |---|---|
-   |Name|**subnet (2)**|
-   |Starting Address|**10.5.0.0 (3)**|
-   |Subnet size|**/24 (256 Addresses) (4)**|
+   |Name|**subnet0**|
+   |Starting Address|**10.5.0.0**|
+   |Subnet size|**/24 (256 Addresses)**|
 
-    ![](../media/11.png)
-
+      ![](../Media/p3.png)
+   
 1. Back on the **IP addresses** tab of the **Create virtual network** page, select **Review + create**.
 1. On the **Review + create** tab of the **Create virtual network** page, select **Create**.
 1. On **SEA-SVR2**, in the Azure portal, browse back to the **Virtual networks** page and select **+ Create**.
@@ -111,36 +114,39 @@ After completing this lab, you'll be able to:
 
    |Setting|Value|
    |---|---|
-   |**Subscription (1)**|the name of the Azure subscription you are using in this lab|
+   |**Subscription (1)**|Leave the default subscription|
    |**Resource group (2)**|**AZ801-L0502-RG**|
    |**Virtual network Name (3)**|**az801l05-test-vnet**|
-   |**Region (4)**|the name of the Azure region into which you deployed the Recovery Services vault earlier in this lab|
+   |**Region (4)**|the name of the Azure region into which you deployed the Recovery Services vault earlier in this lab (Leave the default region)|
 
    ![](../media/06.png)
+   
+1. On the **IP addresses** tab of the **Create virtual network** page,
+    - Remove the default IP Address space by clicking on **Delete the address space**
 
-1. On the **IP addresses** tab of the **Create virtual network** page, select the ellipsis symbol (**...**) next to the **+ add a subnet** button, from the dropdown list select **Delete address space**, select **Add an IP address space**.
+      ![](../Media/unit4-image2.png)   
+      
+   - After deleting **address space**, select **Add IPV4 Address space** specify the following settings (leave others with their default values).
 
-1. On the **Add an IP address space** page, specify the following settings (leave others with their default values) and select **Add**:
+      ![](../Media/unit4-image3.png)
 
-   |Setting|Value|
-   |---|---|
-   |Starting Address|**10.5.0.0**|
-   |Address space size|**/22 (1024 Addresses)**|
-
-   ![](../media/07.png)
+       |Setting|Value|
+       |---|---|
+       |Starting Address|**10.5.0.0**|
+       |Address space size|**/22 (1024 Addresses)**|
 
    > **Note:** Ignore the warning regarding the overlapping IP address space. This is intentional, so the IP address space of the test environment matches the IP address space of the disaster recovery environment.
 
 1. On the **IP addresses** tab of the **Create virtual network** page, select **+ Add a subnet**.
-1. On the **Add a subnet** page, specify the following settings (leave others with their default values) and select **Add (4)**:
+1. On the **Add a subnet** page, specify the following settings (leave others with their default values) and select **Add**:
 
    |Setting|Value|
    |---|---|
-   |Name|**subnet (1)**|
-   |Starting Address|**10.5.0.0 (2)**|
-   |Subnet size|**/24 (256 Addresses) (3)**|
+   |Name|**subnet0**|
+   |Starting Address|**10.5.0.0**|
+   |Subnet size|**/24 (256 Addresses)**|
 
-   ![](../media/08.png)
+      ![](../Media/p3.png)
 
 1. Back on the **IP addresses** tab of the **Create virtual network** page, select **Review + create**.
 1. On the **Review + create** tab of the **Create virtual network** page, select **Create**.
@@ -153,10 +159,10 @@ After completing this lab, you'll be able to:
 
    |Setting|Value|
    |---|---|
-   |**Subscription (1)**|the name of the Azure subscription you are using in this lab|
+   |**Subscription (1)**|Leave the default subscription|
    |**Resource group (2)**|**AZ801-L0502-RG**|
    |**Storage account name (3)**|storage<inject key="DeploymentID" enableCopy="false"/>|
-   |**Region (4)**|the name of the Azure region into which you deployed the Recovery Services vault earlier in this lab|
+   |**Region (4)**|the name of the Azure region into which you deployed the Recovery Services vault earlier in this lab (Leave the default region)|
    |**Performance(5)**|Standard|
    |**Redundancy (6)**|Locally redundant storage (LRS)|
 
@@ -196,7 +202,7 @@ After completing this lab, you'll be able to:
 
     ![](../media/19.png)
 
-1. Select Computer Configuration/Policies/Administrative Templates/Windows Components/Windows Update. Select the policy Configure Automatic Updates.
+1. Select Computer Configuration/Policies/Administrative Templates/Windows Components/Windows Update. Select the policy Configure Automatic Updates and click on policy setting.
 
     ![](../media/20.png)
 
@@ -211,8 +217,6 @@ After completing this lab, you'll be able to:
    Get-Service wuauserv | Set-Service -StartupType Manual
    Get-Service wuauserv | Start-Service
    ```
-
-   ![](../media/68.png)
 
 1. Switch back to the Microsoft Edge window displaying the Azure portal, on the **Source settings** tab of the **Prepare infrastructure** page, select the **Add Hyper-V server (1)** link. 
 1. on the **Add Server** page, select the **Download (2)** link in step 3 of the procedure for adding on-premises Hyper-V hosts in order to download the installer for Microsoft Azure Site Recovery Provider.
@@ -426,6 +430,10 @@ Verify that the **Hyper-V site** and **Hyper-V servers** settings are set correc
 
    ![](../media/49.png)
 
+1. On the **Microsoft Update Opt-in** page of the **Microsoft Azure Recovery Services Agent Setup Wizard**, select **I do not want to use Microsoft Update** and select **Next**
+
+   ![](../Media/p4.png)
+   
 1. On the **Installation** page of the **Microsoft Azure Recovery Services Agent Setup Wizard**, select **Install**.
 
    ![](../media/50.png)
@@ -521,6 +529,7 @@ Verify that the **Hyper-V site** and **Hyper-V servers** settings are set correc
 
 1. Switch to the Microsoft Azure Backup window and select **Recover data**. This will start the **Recover Data Wizard**.
 1. On the **Getting Started** page of the **Recover Data Wizard**, ensue that **This server (sea-svr2.contoso.com)** option is selected and select **Next**.
+1.  On the **Select Recovery Location** page, leave all the default values and select **Next** 
 1. On the **Select Recovery Mode** page, ensure that **Individual files and folders** option is selected, and select **Next**.
 1. On the **Select Volume and Date** page, in the **Select the volume** drop-down list, select **C:\\**, accept the default selection of the available backup, and select **Mount**. 
 

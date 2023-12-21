@@ -33,8 +33,7 @@ After completing this lab, you will be able to:
 
 #### Task 1: Deploy an Azure VM by using an Azure Resource Manager QuickStart template
 
-1. Connect to **SEA-SVR2** and then, if needed, sign in as **CONTOSO\\Administrator** with the password **Pa55w.rd**.
-1. On **SEA-SVR2**, start Microsoft Edge, go to the **[301-nested-vms-in-virtual-network Azure QuickStart template](https://github.com/az140mp/azure-quickstart-templates/tree/master/demos/nested-vms-in-virtual-network)** and select **Deploy to Azure**. (You'll find the button **Deploy to Azure** in the `README.md` file after the list of resources created by the template.) This will automatically redirect the browser to the **Hyper-V Host Virtual Machine with nested VMs** page in the Azure portal.
+1. On **Lab-VM**, start Microsoft Edge, go to the **[301-nested-vms-in-virtual-network Azure QuickStart template](https://github.com/az140mp/azure-quickstart-templates/tree/master/demos/nested-vms-in-virtual-network)** and select **Deploy to Azure**. (You'll find the button **Deploy to Azure** in the `README.md` file after the list of resources created by the template.) This will automatically redirect the browser to the **Hyper-V Host Virtual Machine with nested VMs** page in the Azure portal.
 
    ![](../Media/image3.png)
    
@@ -63,7 +62,9 @@ After completing this lab, you will be able to:
    > **Note**: Wait for the deployment to complete. The deployment might take about 10 minutes.
 
 1. Once deployment is successfully in search bar, search for and select Virtual machine and on virtual machine blade from the list select **az801l07a-hv-vm**.
-1. On **az801l07a-hv-vm** page, under **Settings** section select **Networking** and click on **Add inbound port rule**.
+1. Please follow **1a** or **1b** based on the experience provided in the portal to add inbound port rule.
+    * 1a - On **az801l07a-hv-vm** page, under **Settings** section select **Networking** and click on **Add inbound port rule**
+    * 1b - On **az801l07a-hv-vm** page, under **Networking** section select **Network settings** and click on **+ create port rule** and from drop down and select **inbound port rule**.(New experience)
 1. On **Add inbound security rule** page for **Services** from drop down select **RDP** and click on **Add**.
 1. Once deployment is successfully in search bar, search for and select **Public Ip address**.
 1. On **Public IP addresses** page, select **+ Create** and on basics tab specify the following (Leave others with their default values.):
@@ -74,12 +75,12 @@ After completing this lab, you will be able to:
    | Name |**az801l07a-hv-vnet-ip** |
 
 1. Select **Review + create** and **create**.
-1. Back on **az801l07a-hv-vm | Networking** page, select **az801l07a-hv-vm-nic1** next to **Network Interface** and under **Settings** section select **IP configurations** and select **ipconfig**.
-
-   ![](../Media/lab7-4.png)
-
-1. On **Edit IP configuration** page select checkbox for **Associate public IP address** and for **Public IP address** select **az801l07a-hv-vnet-ip**.
-1. Click on **Save**.
+1. Search and select **Public IP addresses** from the portal.
+   ![](../Media/s2.png)
+1. Select **az801l07a-hv-vnet-ip** from the list.
+   ![](../Media/s3.png)
+1. From the Overview page, select **Associate** and select **Network interface** for Resource type dropdown and select **az801l07a-hv-vm-nic1** from the Network interface dropdown and select **OK**.
+   ![](../Media/s4.png)   
  
 #### Task 2: Deploy a nested VM in the Azure VM
 
@@ -96,7 +97,7 @@ After completing this lab, you will be able to:
 
 1. Within the Remote Desktop session to **az801l07a-hv-vm**, in the **Server Manager** window, select **Local Server**, select the **On** link next to the **IE Enhanced Security Configuration** label. In the **IE Enhanced Security Configuration** dialog box, select both **Off** options, and then select **OK**.
 1. From the Remote Desktop session, open File Explorer and browse to the **F:** drive. Create two folders **F:\\VHDs** and **F:\\VMs**. 
-1. Within the Remote Desktop session to **az801l07a-hv-vm**, start Microsoft Edge, complete the initial setup, go to [Windows Server Evaluations](https://www.microsoft.com/en-in/EvalCenter).
+1. Within the Remote Desktop session to **az801l07a-hv-vm**, start Microsoft Edge, and On the Welcome to Microsoft Edge page, select **Start without your data** and on the help for importing Google browsing data page, select the **Continue without this data** button. Then, proceed to select **Confirm and start browsing** on the next page, go to [Windows Server Evaluations](https://www.microsoft.com/en-in/EvalCenter).
 1. On start your evaluation today page, select **Windows Server 2022**.
 1. On the Windows Server 2022 page, under **Get started for free** select **Download the VHD** and on **Evaluate Windows Server 2022** page provide the requested information for 
    registration and click on **Download now**.
@@ -109,7 +110,7 @@ After completing this lab, you will be able to:
    | Country/region | Enter your country |
    | Company name   | Contoso |
    | Company size   | 1 |
-   | Job Name       | Enter as you wish |
+   | Job Role       | Server Administrator |
    | Phone          | Select your country code and enter phone number |
 
 1. Before downloading the VHD file please change the download location to **F:\VHDs** folder.
@@ -144,6 +145,7 @@ After completing this lab, you will be able to:
 1. In the **Virtual Machine Connection** window to **az801l07a-vm1**, on the **License terms** page, select **Accept**. 
 1. In the **Virtual Machine Connection** window to **az801l07a-vm1**, on the **Customize settings** page, set the password of the built-in Administrator account to **Pa55w.rd**, and then select **Finish**. 
 1. In the **Virtual Machine Connection** window to **az801l07a-vm1**, in the **Action** menu, select first icon **Ctrl + Alt + Delete** and then, when prompted, sign in by using **Pa55w.rd** password.
+   ![](../Media/s11.png) 
 1. In the **Virtual Machine Connection** window to **az801l07a-vm1**, select **Start**. In the **Start** menu, select **Windows PowerShell** and then, in the **Administrator: Windows PowerShell** window, run the following to set the computer name. 
 
    ```powershell
