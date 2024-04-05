@@ -318,7 +318,7 @@ After completing this lab, you will be able to:
 
 1. Within the Remote Desktop session to **az801l07a-hv-vm**, in the browser window, in the Azure portal, search for and select **Azure Migrate**.
 1. On the **Azure Migrate | Get Started** page, in the **Servers, databases, and web apps** section, select **Discover, assess, and migrate**.
-1. On the **Azure Migrate \| Servers, databases, and web apps** page, in the **Azure Migrate: Discovery and Assessment** section, select **Discover**.
+1. On the **Azure Migrate \| Servers, databases, and web apps** page, in the **Azure Migrate: Discovery and Assessment** section, select **Discover**, from thr drop-down select **Using appliance**.
 1. On the **Discover** page, ensure that the **Discover using appliance** option is selected and then, in the **Are your servers virtualized?** drop-down list, select **Yes, with Hyper-V**. 
 1. On the **Discover** page, in the **Name your appliance** text box, type **az801l07a-vma1** and select the **Generate key** button.
 
